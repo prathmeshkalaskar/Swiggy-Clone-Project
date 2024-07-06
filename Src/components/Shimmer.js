@@ -1,7 +1,9 @@
 const Shimmer=()=>{
 return(
-    <div>
-    <h1>Shimmer UI </h1>
+    <div className="restaurant-list">
+    
+        {Array(10).fill("").map(e=><div  className="shimmer-card"></div>)}
+    
     
      
     </div>

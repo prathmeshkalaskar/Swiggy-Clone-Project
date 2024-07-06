@@ -15,10 +15,12 @@
 }
 .nav-item > ul>li{
     padding: 10px;
+    
 }
+
 .logo{
    width: 80px; 
-   height: 100%;
+   height: 100%;     
     
 }
 .card{
@@ -34,10 +36,7 @@
     height: 50%;
 
 }
-.card>div{
-    
 
-}
 .restaurant-list{
     display: flex;
     flex-wrap: wrap;
@@ -46,4 +45,21 @@
     display: flex;
     justify-content: last baseline;
      
+}
+.shimmer-card {
+    width: 200px;
+    height: 200px;
+    background-color:lightgray;
+    margin: 20px;
+    display: flex;
+}
+.restaurantMenu-img{
+    height: 300px;
+    width: 300px;
+}
+.restrocard-link{
+    text-decoration: none;
+    color: black;
+    height: 170px;
+    height: 400px;
 }

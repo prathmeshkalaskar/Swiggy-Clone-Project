@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { restaurantList } from "../Constant";
 import RestrauntCard from "./RestrauntCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 
 function filterData(SearchText, restaurants){ 
@@ -20,21 +21,21 @@ function filterData(SearchText, restaurants){
   
 
   async function getRestaurant() {
-    const data= await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5203896&lng=73.8567005&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    const data= await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.5204303&lng=73.8567437&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
     const json = await data.json();
-    console.log(json);  
+    //console.log(json);  
     setAllRestraunts(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setFilteredRestraunts(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     
   }
-  if(!allrestraunts)
+  if(!allrestraunts) 
     {
       return null;
     }
-    if(filteredrestraunts.length===0)
-      {
-        return <h1>Sorry!! No matches found.</h1>
-      }
+  //  if(filteredrestraunts.length===0)
+    //  {
+      //  return <h1>Sorry!! No matches found.</h1>
+      //}
   
     return (allrestraunts.length ===0)?<Shimmer/> : (
       <>
@@ -51,11 +52,12 @@ function filterData(SearchText, restaurants){
         >Search</button>
       </div>
       <div className="restaurant-list">
+        
        {
          filteredrestraunts.map((restraunt)=>
             {
-              return <RestrauntCard {...restraunt.info} key={"restraunt.info.id"}/>
-            })
+              return (<Link to={"/restuarant/" +restraunt.info.id} className="restrocard-link"><RestrauntCard {...restraunt.info} key={"restraunt.info.id"} />
+            </Link>)})
         }
           
          
