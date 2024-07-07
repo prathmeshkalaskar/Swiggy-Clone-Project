@@ -1,4 +1,5 @@
 const Shimmer=()=>{
+    //this is shimmer UI
 return(
     <div className="restaurant-list">
     
