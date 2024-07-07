@@ -3,11 +3,10 @@ import { restaurantList } from "../Constant";
 import RestrauntCard from "./RestrauntCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import {filterData} from "../../utils/helper";
+import useOnline from "../../utils/useOnline";
 
 
-function filterData(SearchText, restaurants){ 
-  return restaurants.filter((restaurant)=> restaurant?.info?.name?.toLowerCase()?.includes(SearchText.toLowerCase()));
-}
 
  const Body=()=>{ 
   const [allrestraunts, setAllRestraunts]=useState([]);    
@@ -28,9 +27,15 @@ function filterData(SearchText, restaurants){
     setFilteredRestraunts(json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     
   }
+
+  const isonline=useOnline();
+
+  if(!isonline){
+    return <h1>🔴Offline , Please check you internet connection!!</h1>
+  }
   if(!allrestraunts) 
     {
-      return null;
+      return null;       
     }
   //  if(filteredrestraunts.length===0)
     //  {
